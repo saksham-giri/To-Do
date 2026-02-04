@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <main class="app">
+        <header class="app__header">
+            <h1>Todo</h1>
+            <p class="app__subtitle">Stay on track with your tasks</p>
+        </header>
+
+        <section class="card">
+            <form id="todo-form" class="todo-form" autocomplete="off">
+                <input id="todo-input" class="todo-input" type="text" placeholder="Add a new task..."
+                    aria-label="Add a new task" required />
+                <button class="btn btn--primary" type="submit">Add</button>
+            </form>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label for="status-select">Status</label>
+                    <select id="status-select" class="control">
+                        <option value="todo" selected>To do</option>
+                        <option value="doing">Doing</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="priority-select">Priority</label>
+                    <select id="priority-select" class="control">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="due-date">Due</label>
+                    <input id="due-date" class="control" type="date" />
+                </div>
+                <div class="control-group">
+                    <label>Color</label>
+                    <div class="swatches" role="listbox" aria-label="Sticky note colors">
+                        <button type="button" class="color-swatch is-active" data-color="#fff6a3"
+                            style="--swatch: #fff6a3" aria-label="Soft yellow"></button>
+                        <button type="button" class="color-swatch" data-color="#ffd6e7" style="--swatch: #ffd6e7"
+                            aria-label="Pink"></button>
+                        <button type="button" class="color-swatch" data-color="#d9f8ff" style="--swatch: #d9f8ff"
+                            aria-label="Blue"></button>
+                        <button type="button" class="color-swatch" data-color="#e8fbd1" style="--swatch: #e8fbd1"
+                            aria-label="Green"></button>
+                        <button type="button" class="color-swatch" data-color="#efe1ff" style="--swatch: #efe1ff"
+                            aria-label="Lavender"></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <div class="filters" role="tablist" aria-label="Filter todos">
+                    <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+                    <button class="filter" data-filter="active" role="tab" aria-selected="false">Active</button>
+                    <button class="filter" data-filter="completed" role="tab" aria-selected="false">Completed</button>
+                </div>
+                <div class="toolbar__actions">
+                    <input id="search-input" class="control control--search" type="search" placeholder="Search notes" />
+                    <button id="clear-completed" class="btn btn--ghost" type="button">Clear completed</button>
+                </div>
+            </div>
+
+            <div class="board" aria-live="polite">
+                <section class="lane" data-lane="todo">
+                    <header class="lane__header">
+                        <h2>To do</h2>
+                        <span class="lane__count" data-count="todo">0</span>
+                    </header>
+                    <ul class="note-list" data-status="todo" aria-label="Todo notes"></ul>
+                </section>
+                <section class="lane" data-lane="doing">
+                    <header class="lane__header">
+                        <h2>Doing</h2>
+                        <span class="lane__count" data-count="doing">0</span>
+                    </header>
+                    <ul class="note-list" data-status="doing" aria-label="Doing notes"></ul>
+                </section>
+                <section class="lane" data-lane="done">
+                    <header class="lane__header">
+                        <h2>Done</h2>
+                        <span class="lane__count" data-count="done">0</span>
+                    </header>
+                    <ul class="note-list" data-status="done" aria-label="Done notes"></ul>
+                </section>
+            </div>
+
+            <footer class="summary">
+                <span id="items-left">0 items left</span>
+                <div class="summary__actions">
+                    <button id="toggle-all" class="btn btn--ghost" type="button">Toggle all</button>
+                    <button id="clear-all" class="btn btn--ghost" type="button">Clear all</button>
+                </div>
+            </footer>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
